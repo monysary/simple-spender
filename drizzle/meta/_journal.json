@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1759763173229,
+      "tag": "0000_tricky_dreaming_celestial",
+      "breakpoints": true
+    }
+  ]
+}
