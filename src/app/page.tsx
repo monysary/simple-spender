@@ -2,9 +2,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 import { db } from "@/db";
+import { recurring_charge_type } from "@/db/schema";
 
-export default function Home() {
-  console.log(db);
+export default async function Home() {
+  const types = await db.select().from(recurring_charge_type);
+  console.log('Recurring Charge Types:', types);
 
   return (
     <div className={styles.page}>

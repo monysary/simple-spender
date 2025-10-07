@@ -5,6 +5,6 @@ export default defineConfig({
   out: "./drizzle",
   dialect: "sqlite",
   dbCredentials: {
-    url: ":memory:", // Use an in-memory SQLite database
+    url: "./src/db/sqlite.db",
   },
 });
