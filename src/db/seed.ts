@@ -12,8 +12,8 @@ async function seed() {
   }
 
   db.insert(recurring_charge_type).values([
-    { system_name: "expense", display_name: "Expense", order: 1 },
-    { system_name: "saving", display_name: "Saving", order: 2 },
+    { id: 1, system_name: "expense", display_name: "Expense", order: 1 },
+    { id: 2, system_name: "saving", display_name: "Saving", order: 2 },
   ]).run();
 
   console.log("✅ Seeding complete!");
