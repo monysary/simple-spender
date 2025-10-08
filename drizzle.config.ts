@@ -7,4 +7,9 @@ export default defineConfig({
   dbCredentials: {
     url: "./src/db/sqlite.db",
   },
+  migrations: {
+    prefix: "timestamp",
+    table: "drizzle_migrations",
+    schema: "migrations",
+  }
 });

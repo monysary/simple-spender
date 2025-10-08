@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "4b43f84a-faef-46fe-ac22-e66cde37231c",
+  "id": "0339e403-9c30-4014-aaf5-67d3b792155d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "recurring_charge": {
