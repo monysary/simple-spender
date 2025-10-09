@@ -18,10 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import {
   Form,
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
   FormMessage
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -33,10 +33,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
+import { createNewTracker } from "@/db/crud/create-new-tracker";
+
 const formSchema = z.object({
   name: z.string().min(1, "Please enter a name for your tracker"),
   description: z.string().optional(),
-})
+});
 
 export function AddNewTracker() {
   const [open, setOpen] = useState(false);
@@ -49,8 +51,11 @@ export function AddNewTracker() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const newTracker = await createNewTracker(values);
+    if (newTracker.changes === 1) {
+      setOpen(false);
+    }
   };
 
   return (
@@ -78,7 +83,7 @@ export function AddNewTracker() {
         <DialogHeader>
           <DialogTitle>Create New Spending Tracker</DialogTitle>
         </DialogHeader>
-        
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
