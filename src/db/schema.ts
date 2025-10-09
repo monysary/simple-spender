@@ -13,15 +13,16 @@ export const spending_tracker = sqliteTable('spending_tracker', {
   name: text('name').notNull(),
   description: text('description'),
   monthly_max_spending: real('monthly_max_spending'),
-  user_profile_id: text('user_profile_id').notNull().references(() => user_profile.id)
+  // user_profile_id: text('user_profile_id').notNull().references(() => user_profile.id)
 });
 
-export const user_profile = sqliteTable('user_profile', {
-  ...base_table,
-  first_name: text('first_name').notNull(),
-  last_name: text('last_name').notNull(),
-  monthly_income: real('monthly_income').notNull()
-});
+// TODO: Add user profile when sign and auth is introduced
+// export const user_profile = sqliteTable('user_profile', {
+//   ...base_table,
+//   first_name: text('first_name').notNull(),
+//   last_name: text('last_name').notNull(),
+//   monthly_income: real('monthly_income').notNull()
+// });
 
 export const spending_period = sqliteTable('spending_period', {
   ...base_table,
