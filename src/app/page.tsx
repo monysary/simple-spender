@@ -9,10 +9,10 @@ import {
   CardDescription
 } from "@/components/ui/card";
 
-import { getSpendingTracker } from "@/db/crud/get-spending-trackers";
+import { getAllSpendingTrackers } from "@/db/crud/get-all-spending-trackers";
 
 export default async function Home() {
-  const trackers = await getSpendingTracker();
+  const trackers = await getAllSpendingTrackers();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 m-auto p-10 max-w-xl">
