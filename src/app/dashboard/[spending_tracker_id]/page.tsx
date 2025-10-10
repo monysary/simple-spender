@@ -6,6 +6,8 @@ import { SectionCards } from "@/components/section-cards"
 
 import data from "./data.json"
 
+import { getSpendingTracker } from "@/db/crud/get-spending-tracker"
+
 export default function DashboardPage() {
   return (
     <SidebarInset>
