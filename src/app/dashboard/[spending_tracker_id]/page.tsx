@@ -11,12 +11,11 @@ import { SiteHeader } from "@/components/site-header"
 
 import data from "./data.json"
 
+import { getSpendingTracker } from "@/db/crud/get-spending-tracker"
 import { spending_tracker } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
 
 type TrackerType = InferSelectModel<typeof spending_tracker>;
-
-import { getSpendingTracker } from "@/db/crud/get-spending-tracker"
 
 export default function DashboardPage() {
   const [tracker, setTracker] = useState<TrackerType | null>(null);

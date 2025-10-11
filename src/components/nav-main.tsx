@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { AddTransaction } from "./add-transaction"
 
 export function NavMain({
   items,
@@ -33,6 +34,7 @@ export function NavMain({
               <IconCirclePlusFilled />
               <span>Add Transaction</span>
             </SidebarMenuButton>
+            <AddTransaction />
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>

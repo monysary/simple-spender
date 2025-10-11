@@ -25,13 +25,13 @@ export const spending_tracker = sqliteTable('spending_tracker', {
 //   monthly_income: real('monthly_income').notNull()
 // });
 
-export const spending_period = sqliteTable('spending_period', {
-  ...base_table,
-  start_date: text('start_date').notNull(),
-  end_date: text('end_date').notNull(),
-  description: text('description'),
-  spending_tracker_id: text('spending_tracker_id').notNull().references(() => spending_tracker.id)
-});
+// export const spending_period = sqliteTable('spending_period', {
+//   ...base_table,
+//   start_date: text('start_date').notNull(),
+//   end_date: text('end_date').notNull(),
+//   description: text('description'),
+//   spending_tracker_id: text('spending_tracker_id').notNull().references(() => spending_tracker.id)
+// });
 
 export const recurring_charge = sqliteTable('recurring_charge', {
   ...base_table,
@@ -54,5 +54,5 @@ export const transaction = sqliteTable('transaction', {
   amount: integer('amount').notNull(),
   description: text('description'),
   date: text('date').notNull(),
-  spending_period_id: text('spending_period_id').notNull().references(() => spending_period.id)
+  spending_tracker_id: text('spending_tracker_id').notNull().references(() => spending_tracker.id)
 });
