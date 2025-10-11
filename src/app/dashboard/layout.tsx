@@ -2,10 +2,11 @@ import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
 
 export default function DashboardLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
+
   return (
     <SidebarProvider
       style={

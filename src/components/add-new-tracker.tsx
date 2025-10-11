@@ -26,8 +26,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { IconPlus } from "@tabler/icons-react";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -72,7 +71,7 @@ export function AddNewTracker() {
         <Empty>
           <EmptyHeader>
             <EmptyMedia variant="icon">
-              <FontAwesomeIcon icon={faPlus} />
+              <IconPlus />
             </EmptyMedia>
             <EmptyTitle>Add New Tracker</EmptyTitle>
           </EmptyHeader>
