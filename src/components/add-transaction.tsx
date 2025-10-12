@@ -10,12 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Empty,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -26,8 +20,7 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-
-import { IconPlus } from "@tabler/icons-react";
+import { IconCirclePlusFilled } from "@tabler/icons-react"
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,11 +37,11 @@ const formSchema = z.object({
 
 export function AddTransaction() {
   const [open, setOpen] = useState(false);
-  
+
   const params = useParams();
   const id = Array.isArray(params.spending_tracker_id)
-  ? params.spending_tracker_id[0]
-  : params.spending_tracker_id ?? "";
+    ? params.spending_tracker_id[0]
+    : params.spending_tracker_id ?? "";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -83,15 +76,9 @@ export function AddTransaction() {
         }
       }}
     >
-      <DialogTrigger className="cursor-pointer border border-dashed rounded-xl hover:border-slate-500/50">
-        <Empty>
-          <EmptyHeader>
-            <EmptyMedia variant="icon">
-              <IconPlus />
-            </EmptyMedia>
-            <EmptyTitle>Add Transaction</EmptyTitle>
-          </EmptyHeader>
-        </Empty>
+      <DialogTrigger className="flex items-center w-full p-2 rounded-md gap-2 bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear">
+        <IconCirclePlusFilled />
+        <span>Add Transaction</span>
       </DialogTrigger>
 
       <DialogContent>
@@ -121,11 +108,11 @@ export function AddTransaction() {
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
-                    <Input 
-                      id="amount" 
-                      type="number" 
+                    <Input
+                      id="amount"
+                      type="number"
                       {...field}
-                      onChange={(e) => field.onChange(e.target.valueAsNumber)} 
+                      onChange={(e) => field.onChange(e.target.valueAsNumber)}
                     />
                   </FormControl>
                   <FormMessage />

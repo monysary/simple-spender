@@ -56,7 +56,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="/">
                 <IconArrowLeft />
-                <span className="text-base font-semibold">Back</span>
+                <span className="text-base font-semibold">Home</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
