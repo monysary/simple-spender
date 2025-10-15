@@ -27,6 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { createTransaction } from "@/db/crud/create-transaction";
+import { getAllTransactions } from "@/db/crud/get-all-transactions";
 
 const formSchema = z.object({
   name: z.string().min(1, "Please enter a name for your transaction"),
@@ -59,7 +60,6 @@ export function AddTransaction() {
       spending_tracker_id: id?.toString(),
       date: new Date(values.date).toISOString()
     }
-    values.amount = values.amount * 100; // convert float to integer for accuracy
     const newTransaction = await createTransaction(input);
     if (newTransaction.changes === 1) {
       setOpen(false);

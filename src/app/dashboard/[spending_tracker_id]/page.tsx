@@ -9,26 +9,43 @@ import { DataTable } from "@/components/data-table"
 import { SectionCards } from "@/components/section-cards"
 import { SiteHeader } from "@/components/site-header"
 
-import data from "./data.json"
-
 import { getSpendingTracker } from "@/db/crud/get-spending-tracker"
-import { spending_tracker } from "@/db/schema";
+import { getAllTransactions } from "@/db/crud/get-all-transactions"
+import { spending_tracker, transaction } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
 
 type TrackerType = InferSelectModel<typeof spending_tracker>;
+type TransactionRow = {
+  id: string;
+  name: string;
+  date: Date;
+  amount: number;
+  description: string;
+};
 
 export default function DashboardPage() {
   const [tracker, setTracker] = useState<TrackerType | null>(null);
+  const [transactions, setTransactions] = useState<TransactionRow[]>([])
 
   const params = useParams<{ spending_tracker_id: string }>();
   const id = params.spending_tracker_id;
 
   useEffect(() => {
     (async () => {
-      const data = await getSpendingTracker(id);
-      setTracker(data);
-    })();
+      const trackerData = await getSpendingTracker(id);
+      setTracker(trackerData);
 
+      const transactionData = await getAllTransactions(id);
+      const formattedTransactionData = transactionData.map(data => ({
+        id: data.id,
+        name: data.name,
+        date: new Date(data.date),
+        amount: data.amount,
+        description: data.description ?? "",
+      }))
+      setTransactions(formattedTransactionData);
+    })();
+    
   }, [id])
 
   return (
@@ -41,7 +58,7 @@ export default function DashboardPage() {
             <div className="px-4 lg:px-6">
               <ChartAreaInteractive />
             </div>
-            <DataTable data={data} />
+            <DataTable data={transactions} />
           </div>
         </div>
       </div>
